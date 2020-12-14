@@ -11,7 +11,7 @@ import pickle
 import collections
 import time
 
-model = 1 #1 is unigram, 2 is bigram.
+MODEL = 1 #1 is unigram, 2 is bigram.
 
 def timeSince(since):
     now = time.time()
@@ -22,17 +22,16 @@ def timeSince(since):
 start = time.time()
 
 allWords = set()
-if model == 1:
+if MODEL == 1:
     with open("allWords.txt", "rb") as fp:   
         allWords = pickle.load(fp)
-elif model == 2:
+elif MODEL == 2:
     with open("allBigramWords.txt", "rb") as fp:   
         allWords = pickle.load(fp)
 else:
     with open("allTrigramWords.txt", "rb") as fp:   
         allWords = pickle.load(fp)
 
-print(len(allWords))
 dataset = []
 
 featurestemplate = dict.fromkeys(allWords, 0)
@@ -81,9 +80,9 @@ for file_name in trainFiles:
     words = data[0]  
     
     file = None
-    if model == 1:
+    if MODEL == 1:
         file = extractWordFeatures(data)
-    elif model == 2:
+    elif MODEL == 2:
         file = extractBigramFeatures(data)
     else:
         file = extractTrigramFeatures(data)
@@ -144,17 +143,15 @@ for file_name in valFiles:
     openfile.close()
     words = data[0]
     file = None
-    if model == 1:
+    if MODEL == 1:
         file = extractWordFeatures(data)
-    elif model == 2:
+    elif MODEL == 2:
         file = extractBigramFeatures(data)
     else:
         file = extractTrigramFeatures(data)
         
     file["text_language"] = language
     valdata.append(file)
-    
-
     
 print("read validation files")
 print(timeSince(start))
