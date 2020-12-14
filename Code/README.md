@@ -6,7 +6,7 @@ dataset for uni-gram and bi-gram.
 The cs221.py file trains, tests, and validates our KNN, logistic regression, and SVM
 models. We changed model variable in line 14 to be 1 for unigram or 2 for bigram.
 Otherwise, we just ran to program to collect our results. We also changed the valPath
-(Line 133) to �Test_Test� and only ran the logistic unigram C = 10 with L2 regularization,
+(Line 133) to Test_Test and only ran the logistic unigram C = 10 with L2 regularization,
 in order to test our final model.
 
 The RNN.py file contains our RNN model.
